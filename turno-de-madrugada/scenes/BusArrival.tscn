@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bbb6vgex0dhpu"]
+
+[ext_resource type="Script" uid="uid://kaqdtjhlgoqa" path="res://scripts/BusArrival.gd" id="1_gd"]
+[ext_resource type="Texture2D" uid="uid://b8b020r4qvcg5" path="res://assents/Fondo.png" id="2_nc3b7"]
+[ext_resource type="Texture2D" uid="uid://c3qwlxxpx51mc" path="res://assents/bus.png" id="3_0gpx8"]
+
+[node name="BusArrival" type="Node2D" unique_id=38667678]
+script = ExtResource("1_gd")
+bus_move_duration = 2.5
+
+[node name="fondo" type="TextureRect" parent="." unique_id=1895985718]
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("2_nc3b7")
+
+[node name="Bus" type="Sprite2D" parent="." unique_id=1910698040]
+position = Vector2(0, 200)
+texture = ExtResource("3_0gpx8")
+
+[node name="FadeOverlay" type="ColorRect" parent="." unique_id=769717192]
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0, 0, 0, 0)

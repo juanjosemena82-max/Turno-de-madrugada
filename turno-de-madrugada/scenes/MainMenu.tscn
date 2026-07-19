@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://b3knns73s34vy"]
+
+[ext_resource type="Script" uid="uid://cudcelj7aefiu" path="res://scripts/MainMenu.gd" id="1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yqorp"]
+load_path = "res://.godot/imported/Fondo.png-93da201d5c52d458707d7d69e5c4ffc1.ctex"
+
+[node name="MainMenu" type="Control" unique_id=561254225]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1248108933]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_yqorp")
+
+[node name="Title" type="Label" parent="." unique_id=1432231904]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.15
+anchor_right = 0.5
+anchor_bottom = 0.15
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 156.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0.94, 0.75, 0.32, 1)
+theme_override_font_sizes/font_size = 26
+text = "TURNO DE MADRUGADA"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=1355863920]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = -150.0
+offset_top = -20.0
+offset_right = 150.0
+offset_bottom = 4.0
+theme_override_colors/font_color = Color(0.6, 0.65, 0.7, 1)
+theme_override_font_sizes/font_size = 10
+text = "El miedo tinene boleto."
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="." unique_id=1133862512]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="StartButton" type="Button" parent="ButtonContainer" unique_id=1612234720]
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+text = "Iniciar Turno"
+
+[node name="SettingsButton" type="Button" parent="ButtonContainer" unique_id=667510979]
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+text = "Ajustes"
+
+[node name="QuitButton" type="Button" parent="ButtonContainer" unique_id=1459975979]
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+text = "Salir"
+
+[node name="Version" type="Label" parent="." unique_id=1176082411]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.4, 0.42, 0.46, 1)
+theme_override_font_sizes/font_size = 8
+text = "v0.0.1 - prototipo"

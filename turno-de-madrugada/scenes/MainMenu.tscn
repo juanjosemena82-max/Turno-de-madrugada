@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3knns73s34vy"]
 
-[ext_resource type="Script" uid="uid://cudcelj7aefiu" path="res://scripts/MainMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://cucpel6yo7ajb" path="res://scripts/MainMenu.gd" id="1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yqorp"]
 load_path = "res://.godot/imported/Fondo.png-93da201d5c52d458707d7d69e5c4ffc1.ctex"
@@ -55,6 +55,18 @@ theme_override_font_sizes/font_size = 10
 text = "El miedo tinene boleto."
 horizontal_alignment = 1
 
+[node name="SettingsIconButton" type="Button" parent="." unique_id=1821051958]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -35.0
+offset_bottom = 31.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = " ⚙"
+
 [node name="ButtonContainer" type="VBoxContainer" parent="." unique_id=1133862512]
 layout_mode = 1
 anchors_preset = 8
@@ -75,10 +87,11 @@ custom_minimum_size = Vector2(180, 36)
 layout_mode = 2
 text = "Iniciar Turno"
 
-[node name="SettingsButton" type="Button" parent="ButtonContainer" unique_id=667510979]
+[node name="ContinueButton" type="Button" parent="ButtonContainer" unique_id=667510979]
 custom_minimum_size = Vector2(180, 36)
 layout_mode = 2
-text = "Ajustes"
+disabled = true
+text = "continuar"
 
 [node name="QuitButton" type="Button" parent="ButtonContainer" unique_id=1459975979]
 custom_minimum_size = Vector2(180, 36)

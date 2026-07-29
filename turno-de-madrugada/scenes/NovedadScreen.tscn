@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dnsxfig1px8ap"]
+
+[node name="NovedadScreen" type="Control" unique_id=2112983604]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="Background" type="ColorRect" parent="." unique_id=1733061917]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0.055, 0.067, 0.114, 1)
+
+[node name="Title" type="Label" parent="." unique_id=527960783]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 16.0
+offset_right = 340.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.85, 0.3, 0.25, 1)
+theme_override_font_sizes/font_size = 20
+text = "NOVEDAD"
+horizontal_alignment = 1
+
+[node name="NewsLabel" type="Label" parent="." unique_id=1397519827]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 420.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MechanicsLabel" type="Label" parent="." unique_id=1951171400]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 150.0
+offset_right = 420.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0.94, 0.75, 0.32, 1)
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="." unique_id=1241685551]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 228.0
+offset_right = 290.0
+offset_bottom = 258.0
+text = "Continuar"

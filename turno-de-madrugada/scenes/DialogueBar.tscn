@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://d4dt4werrlw1v"]
+
+[ext_resource type="Script" uid="uid://dovwa14jlxtpg" path="res://scripts/DialogueBar.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://crp5kpvfyapc" path="res://assents/ui/dialogo_frames.png" id="2_t0crt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.09, 0.14, 1)
+
+[node name="DialogueBar" type="Control" unique_id=1113298534]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Panel" type="Panel" parent="." unique_id=1554746657]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 175.0
+offset_right = 480.0
+offset_bottom = 270.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="BarIcon" type="TextureRect" parent="Panel" unique_id=2003399273]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 480.0
+offset_bottom = 94.0
+texture = ExtResource("2_t0crt")
+stretch_mode = 4
+
+[node name="Portrait" type="TextureRect" parent="Panel" unique_id=1271788264]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 38.0
+offset_right = 78.0
+offset_bottom = 90.0
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="Panel" unique_id=2012131059]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 11.0
+offset_right = 222.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.94, 0.75, 0.32, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="DialogueText" type="Label" parent="Panel" unique_id=1190558838]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 37.0
+offset_right = 464.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.92, 1)
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 3
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Panel" unique_id=1905675571]
+modulate = Color(1, 1, 1, 0.11372549)
+self_modulate = Color(0.40881816, 1, 0.84881413, 1)
+layout_mode = 0
+offset_left = 214.0
+offset_top = 52.0
+offset_right = 480.0
+offset_bottom = 89.0
+theme_override_constants/separation = 6
+
+[node name="PassButton" type="Button" parent="Panel/ButtonsContainer" unique_id=1840308954]
+layout_mode = 2
+text = "Pasar (A)"
+
+[node name="DenyButton" type="Button" parent="Panel/ButtonsContainer" unique_id=1373059922]
+layout_mode = 2
+text = "Vete (D)"
+
+[node name="AskButton" type="Button" parent="Panel/ButtonsContainer" unique_id=726869013]
+layout_mode = 2
+text = "Preguntar (S)"

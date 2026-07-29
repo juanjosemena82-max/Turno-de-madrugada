@@ -43,7 +43,9 @@ func _ready() -> void:
 
 
 func _on_intro_finished() -> void:
+	print("[BusArrival] Intro terminada, intentando cambiar a: ", next_scene_path)
 	if ResourceLoader.exists(next_scene_path):
-		get_tree().change_scene_to_file(next_scene_path)
+		var err := get_tree().change_scene_to_file(next_scene_path)
+		print("[BusArrival] Resultado de change_scene_to_file: ", err)
 	else:
 		print("[BusArrival] Animación terminada (", next_scene_path, " aún no existe)")

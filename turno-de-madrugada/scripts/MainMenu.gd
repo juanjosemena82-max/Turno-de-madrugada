@@ -1,50 +1,43 @@
 extends Control
 
 ## Menú principal de "Turno de Madrugada".
-## - Iniciar Turno: empieza una partida nueva desde el día 1.
-## - Continuar: carga la última partida autoguardada (deshabilitado
-##   si todavía no existe ninguna).
+## - Jugar: si ya existe una partida guardada la retoma (cargando el
+##   historial de turnos); si no existe ninguna, empieza una nueva
+##   desde el día 1. En ambos casos lleva a la pantalla de Turnos.
 ## - El ícono de ajustes vive aparte, en la esquina superior derecha.
 
-const INTRO_SCENE_PATH := "res://scenes/BusArrival.tscn"
-const GAME_SCENE_PATH := "res://scenes/Game.tscn"
+const TURNS_SCENE_PATH := "res://scenes/TurnsScreen.tscn"
 const SETTINGS_SCENE_PATH := "res://scenes/Settings.tscn"
 
 @onready var start_button: Button = $ButtonContainer/StartButton
-@onready var continue_button: Button = $ButtonContainer/ContinueButton
 @onready var quit_button: Button = $ButtonContainer/QuitButton
 @onready var settings_icon_button: Button = $SettingsIconButton
 
 
 func _ready() -> void:
 	start_button.pressed.connect(_on_start_pressed)
-	continue_button.pressed.connect(_on_continue_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	settings_icon_button.pressed.connect(_on_settings_pressed)
-
-	# El botón "Continuar" solo se activa si ya existe una partida guardada.
-	continue_button.disabled = not SaveManager.has_save()
 
 	start_button.grab_focus()
 
 
 func _on_start_pressed() -> void:
-	SaveManager.start_new_game()
-	_go_to_next_scene()
-
-
-func _on_continue_pressed() -> void:
-	if SaveManager.load_game():
-		_go_to_next_scene()
-
-
-func _go_to_next_scene() -> void:
-	if ResourceLoader.exists(INTRO_SCENE_PATH):
-		get_tree().change_scene_to_file(INTRO_SCENE_PATH)
-	elif ResourceLoader.exists(GAME_SCENE_PATH):
-		get_tree().change_scene_to_file(GAME_SCENE_PATH)
+	# Ya no hay botón "Continuar" separado: "Jugar" retoma la partida
+	# guardada si existe, o arranca una nueva si no.
+	if SaveManager.has_save():
+		SaveManager.load_game()
 	else:
-		print("[MainMenu] Ninguna escena de destino existe aún")
+		SaveManager.start_new_game()
+
+	_go_to_turns_screen()
+
+
+func _go_to_turns_screen() -> void:
+	if ResourceLoader.exists(TURNS_SCENE_PATH):
+		get_tree().change_scene_to_file(TURNS_SCENE_PATH)
+	else:
+		print("[MainMenu] TurnsScreen.tscn aún no existe")
 
 
 func _on_settings_pressed() -> void:

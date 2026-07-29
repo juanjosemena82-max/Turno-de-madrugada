@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SaveManager="*uid://duib6niao25a7"
+SaveManager="*res://scripts/SaveManager.gd"
 
 [display]
 

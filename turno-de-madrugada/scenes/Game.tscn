@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnrpl8cl517be"]
 
-[ext_resource type="Script" uid="uid://c5q54dfwqvftl" path="res://scripts/Game.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/DialogueBar.tscn" id="2"]
+[ext_resource type="Script" uid="uid://mvwipp5fb6cl" path="res://scripts/Game.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://d4dt4werrlw1v" path="res://scenes/DialogueBar.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://c5tt4c161vh60" path="res://assents/fondo puerta bus.png" id="2_cpr0p"]
 
 [node name="Game" type="Node2D" unique_id=1907597854]
@@ -16,10 +16,10 @@ expand_mode = 1
 [node name="PassengerSprite" type="TextureRect" parent="." unique_id=1016449162]
 texture_filter = 1
 offset_left = 176.0
-offset_top = 70.0
+offset_top = 80.0
 offset_right = 304.0
-offset_bottom = 198.0
+offset_bottom = 208.0
 
 [node name="DialogueBar" parent="." unique_id=1162111003 instance=ExtResource("2")]
-layout_mode = 3
-anchors_preset = 0
+offset_top = 1.0
+offset_bottom = 271.0

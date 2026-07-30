@@ -13,30 +13,32 @@ class_name LevelData
 static func get_level(day: int, decisions: Dictionary) -> Dictionary:
 	match day:
 		1:
+			# Turno de NOCHE: Cali -> Vijes. Todos vuelven a casa.
 			return {
 				"novedad": {},
 				"stops": [
 					[
-						PassengerData.get_student(decisions),
-						PassengerData.get_worker(decisions),
-						PassengerData.get_hiding_lady(decisions),
+						PassengerData.get_student(decisions, "cali_vijes"),
+						PassengerData.get_worker(decisions, "cali_vijes"),
+						PassengerData.get_hiding_lady(decisions, "cali_vijes"),
 					],
 				],
 			}
 		2:
+			# Turno de MADRUGADA: Vijes -> Cali. Todos van a sus cosas.
 			return {
 				"novedad": {
-					"news": "Anoche se escapó un recluso de la cárcel municipal. Las autoridades piden estar alerta con cualquier pasajero sospechoso.",
-					"mechanics": "Desde ahora el turno tiene varias paradas. Presta atención: no todos los pasajeros dicen la verdad sobre a dónde van.",
+					"news": "La empresa de transporte ha decidido habilitar nuevos puntos de parada en la ruta, para poder atender a más pasajeros.",
+					"mechanics": "Desde ahora el turno tiene varias paradas. Después de atender a los pasajeros de una, el bus sigue hasta la siguiente.",
 				},
 				"stops": [
 					[
-						PassengerData.get_student(decisions),
-						PassengerData.get_worker(decisions),
+						PassengerData.get_student(decisions, "vijes_cali"),
+						PassengerData.get_worker(decisions, "vijes_cali"),
 					],
 					[
-						PassengerData.get_carla_contreras(decisions),
-						PassengerData.get_patricia_lozano(decisions),
+						PassengerData.get_carla_contreras(decisions, "vijes_cali"),
+						PassengerData.get_patricia_lozano(decisions, "vijes_cali"),
 					],
 				],
 			}

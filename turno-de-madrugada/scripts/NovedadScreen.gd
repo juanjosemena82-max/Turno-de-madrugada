@@ -20,6 +20,8 @@ func _ready() -> void:
 	var level: Dictionary = LevelData.get_level(day, decisions)
 	var novedad: Dictionary = level.get("novedad", {})
 
+	print("[NovedadScreen] day=", day, " novedad=", novedad)
+
 	news_label.text = novedad.get("news", "")
 	mechanics_label.text = novedad.get("mechanics", "")
 

@@ -1,40 +1,48 @@
 extends Node
 class_name PassengerData
 
-## Catálogo de pasajeros. Cada función recibe el diccionario de
-## "decisions" (SaveManager.get_decisions()) para poder variar el
-## diálogo según qué pasó con ese personaje en un turno anterior.
+## Catálogo de pasajeros. Cada función recibe:
+##   - "decisions": lo que el jugador decidió con ese personaje en
+##     turnos anteriores (SaveManager.get_decisions()).
+##   - "route": en qué tramo de la ruta va este turno, porque el bus
+##     hace Vijes - Yumbo - Cali de ida y de vuelta, en dos horarios:
+##       "cali_vijes"  -> turno de NOCHE, la gente vuelve a casa.
+##       "vijes_cali"  -> turno de MADRUGADA, la gente va a sus cosas.
 ##
-## Cada pasajero tiene:
+## Cada pasajero devuelve:
 ##   "id"         -> identificador estable (para recordar decisiones)
 ##   "name"       -> nombre mostrado en la barra
 ##   "portrait"   -> ruta a su retrato
 ##   "lines"      -> diálogo, en orden
 ##   "always_ask" -> si el botón "Preguntar" nunca se debe ocultar
 
-static func get_student(decisions: Dictionary = {}) -> Dictionary:
+static func get_student(decisions: Dictionary = {}, route: String = "vijes_cali") -> Dictionary:
 	var last_result: String = decisions.get("stuard_contreras", "")
 	var lines: Array
 
-	if last_result == "pasar":
+	if route == "cali_vijes":
+		# Turno de noche: vuelve a Vijes a estudiar para el parcial
+		# de mañana. Todavía no ha pasado el examen.
 		lines = [
-			"¡Buenas! Al final sí alcancé a llegar, pasé el examen.",
-			"De verdad gracias por dejarme subir la otra vez.",
-			"Hoy no tengo tanto afán, jeje.",
-		]
-	elif last_result == "vete":
-		lines = [
-			"...la vez pasada no llegué a tiempo. Perdí el examen por eso.",
-			"Tuve que hablar con el profesor para poder presentarlo de nuevo.",
-			"Esta vez sí necesito llegar, por favor.",
+			"Uy, menos mal alcancé este bus.",
+			"Tengo que estudiar para un parcial mañana.",
+			"Vivo en Vijes, ya casi llego a descansar.",
 		]
 	else:
-		lines = [
-			"Buenas... ¿este bus va hacia la universidad?",
-			"Es que tengo un examen en 20 minutos, por favor no me lo pierda.",
-			"Vivo aquí cerca, salgo tarde casi todos los días, jeje.",
-			"¿Ya casi puedo subir? De verdad tengo el tiempo justo.",
-		]
+		# Turno de madrugada: va camino al examen. El diálogo cambia
+		# según si lo dejaron subir la noche anterior o no.
+		if last_result == "vete":
+			lines = [
+				"Anoche no me dejaron subir... casi no pude estudiar.",
+				"Espero que me vaya bien de todas formas.",
+				"Voy para la Universidad del Valle, tengo el parcial temprano.",
+			]
+		else:
+			lines = [
+				"Espero pasar el examen, estudié mucho anoche.",
+				"Voy para la Universidad del Valle, tengo el parcial temprano.",
+				"Gracias por dejarme subir ayer, alcancé a estudiar tranquilo.",
+			]
 
 	return {
 		"id": "stuard_contreras",
@@ -45,27 +53,44 @@ static func get_student(decisions: Dictionary = {}) -> Dictionary:
 	}
 
 
-static func get_worker(decisions: Dictionary = {}) -> Dictionary:
+static func get_worker(decisions: Dictionary = {}, route: String = "vijes_cali") -> Dictionary:
+	var lines: Array
+
+	if route == "cali_vijes":
+		# Turno de noche: Eugenio vuelve a casa después de trabajar.
+		var variants: Array = [
+			"Uy, qué día tan largo en la bodega.",
+			"Ya quiero llegar a Vijes a descansar.",
+			"El jefe anda de mal genio esta semana.",
+			"Mañana toca madrugar otra vez, qué pereza.",
+		]
+		lines = [variants[randi() % variants.size()], "Vivo en Vijes, ya casi llegamos."]
+	else:
+		# Turno de madrugada: va camino al trabajo en Yumbo.
+		var variants: Array = [
+			"Turno de las cinco, como siempre.",
+			"Hoy amanecí más cansado que de costumbre.",
+			"Ya me sé de memoria cada bache de esta vía.",
+			"Uy, hoy sí hizo frío para variar.",
+		]
+		lines = [variants[randi() % variants.size()], "Trabajo en una bodega en Yumbo, me quedo por ahí."]
+
 	return {
 		"id": "eugenio_escobar",
 		"name": "Eugenio Escobar",
 		"portrait": "res://assents/characters/Eugenio Escobar.png",
-		"lines": [
-			"Turno de las cinco, como siempre.",
-			"Trabajo en la fábrica al otro lado del puente.",
-			"Llevo diez años tomando este mismo bus, no hay mucho que contar.",
-		],
+		"lines": lines,
 		"always_ask": false,
 	}
 
 
-static func get_hiding_lady(decisions: Dictionary = {}) -> Dictionary:
+static func get_hiding_lady(decisions: Dictionary = {}, route: String = "cali_vijes") -> Dictionary:
 	return {
 		"id": "gloria_ines_cardona",
 		"name": "Gloria Inés Cardona",
 		"portrait": "res://assents/characters/Gloria ines cardona.png",
 		"lines": [
-			"Buen día... voy a visitar a mi hermana, nada más.",
+			"Buenas noches... voy a visitar a mi hermana en Vijes, nada más.",
 			"No, no llevo nada importante conmigo, solo cosas mías.",
 			"¿Por qué pregunta tanto? Ya le dije lo que necesitaba saber.",
 			"Mire, ya se lo dije. No tengo nada más que contarle.",
@@ -74,21 +99,21 @@ static func get_hiding_lady(decisions: Dictionary = {}) -> Dictionary:
 	}
 
 
-static func get_carla_contreras(decisions: Dictionary = {}) -> Dictionary:
+static func get_carla_contreras(decisions: Dictionary = {}, route: String = "vijes_cali") -> Dictionary:
 	return {
 		"id": "carla_contreras",
 		"name": "Carla Contreras",
 		"portrait": "res://assents/characters/Carla Contreras.png",
 		"lines": [
-			"Buenas, ¿este es el bus de siempre?",
-			"Voy para el centro, tengo una cita que no puedo perder.",
-			"¿Falta mucho para que salga?",
+			"¡Al fin pasa un bus! Voy hasta la terminal de Cali.",
+			"Tengo una cita que no puedo perder, ojalá no se demore mucho.",
+			"¿Falta mucho para que salgamos?",
 		],
 		"always_ask": false,
 	}
 
 
-static func get_patricia_lozano(decisions: Dictionary = {}) -> Dictionary:
+static func get_patricia_lozano(decisions: Dictionary = {}, route: String = "vijes_cali") -> Dictionary:
 	return {
 		"id": "patricia_lozano",
 		"name": "Patricia Lozano",
@@ -96,7 +121,7 @@ static func get_patricia_lozano(decisions: Dictionary = {}) -> Dictionary:
 		"lines": [
 			"A esta hora siempre espero el bus, no falla.",
 			"Uy, justo a tiempo hoy.",
-			"Ya casi es mi parada de siempre, no se demore mucho.",
+			"Yo me quedo por Sameco, avíseme cuando lleguemos por ahí.",
 		],
 		"always_ask": false,
 	}

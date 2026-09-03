@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmabhhhyqqq6t"
-path="res://.godot/imported/Gloria ines cardona.png-b765d203e9bdb2c98ee6fd97fab8835e.ctex"
+uid="uid://cwg8ifwfinasw"
+path="res://.godot/imported/A_10.png-7ecf28ea9fb5c18eec22cf6bb19ae173.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assents/characters/Gloria ines cardona.png"
-dest_files=["res://.godot/imported/Gloria ines cardona.png-b765d203e9bdb2c98ee6fd97fab8835e.ctex"]
+source_file="res://assents/characters/A_10.png"
+dest_files=["res://.godot/imported/A_10.png-7ecf28ea9fb5c18eec22cf6bb19ae173.ctex"]
 
 [params]
 

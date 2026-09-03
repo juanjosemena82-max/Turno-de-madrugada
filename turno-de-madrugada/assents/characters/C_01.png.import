@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8bb2b536j3x0"
-path="res://.godot/imported/Eugenio Escobar.png-b127ec1030e022509fa3297b2aaa98d2.ctex"
+uid="uid://cmsk5pjj7mv7a"
+path="res://.godot/imported/C_01.png-a1729d68b8c00d60db157b35d94de1d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assents/characters/Eugenio Escobar.png"
-dest_files=["res://.godot/imported/Eugenio Escobar.png-b127ec1030e022509fa3297b2aaa98d2.ctex"]
+source_file="res://assents/characters/C_01.png"
+dest_files=["res://.godot/imported/C_01.png-a1729d68b8c00d60db157b35d94de1d9.ctex"]
 
 [params]
 

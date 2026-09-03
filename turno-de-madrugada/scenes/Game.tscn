@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cnrpl8cl517be"]
 
-[ext_resource type="Script" uid="uid://mvwipp5fb6cl" path="res://scripts/Game.gd" id="1"]
+[ext_resource type="Script" uid="uid://b8ldwnesyct2e" path="res://scripts/Game.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://d4dt4werrlw1v" path="res://scenes/DialogueBar.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://c5tt4c161vh60" path="res://assents/fondo puerta bus.png" id="2_cpr0p"]
+[ext_resource type="PackedScene" path="res://scenes/PauseMenu.tscn" id="3_pause"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_78awf"]
 
 [node name="Game" type="Node2D" unique_id=1907597854]
 script = ExtResource("1")
@@ -23,3 +26,33 @@ offset_bottom = 208.0
 [node name="DialogueBar" parent="." unique_id=1162111003 instance=ExtResource("2")]
 offset_top = 1.0
 offset_bottom = 271.0
+
+[node name="ToastLabel" type="Label" parent="." unique_id=816767692]
+modulate = Color(1, 1, 1, 0)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 300.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.95, 0.85, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 11
+label_settings = SubResource("LabelSettings_78awf")
+autowrap_mode = 3
+
+[node name="ReviewBanner" type="Label" parent="." unique_id=487891972]
+visible = false
+offset_left = 340.0
+offset_top = 4.0
+offset_right = 476.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.9, 0.75, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 9
+text = "MODO REPASO — no afecta tu partida"
+horizontal_alignment = 2
+
+[node name="PauseMenu" parent="." unique_id=1215084708 instance=ExtResource("3_pause")]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df0t7u645fkak"
-path="res://.godot/imported/Patricia lozano.png-d08d7591e08ff89b3e4bd20092efdc3f.ctex"
+uid="uid://bqkha4yxu143m"
+path="res://.godot/imported/C_03.png-c0e2e80a532c2aa57f2ce0e184cd9cc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assents/characters/Patricia lozano.png"
-dest_files=["res://.godot/imported/Patricia lozano.png-d08d7591e08ff89b3e4bd20092efdc3f.ctex"]
+source_file="res://assents/characters/C_03.png"
+dest_files=["res://.godot/imported/C_03.png-c0e2e80a532c2aa57f2ce0e184cd9cc4.ctex"]
 
 [params]
 

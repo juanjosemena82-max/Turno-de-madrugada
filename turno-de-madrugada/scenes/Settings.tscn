@@ -69,27 +69,6 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="BoardRow" type="Label" parent="TabContainer/Controles"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
-horizontal_alignment = 1
-text = "Dejar subir  —  A"
-
-[node name="DenyRow" type="Label" parent="TabContainer/Controles"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
-horizontal_alignment = 1
-text = "No dejar subir  —  D"
-
-[node name="AskRow" type="Label" parent="TabContainer/Controles"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
-horizontal_alignment = 1
-text = "Preguntar  —  S"
-
 [node name="CatchRow" type="Label" parent="TabContainer/Controles"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12

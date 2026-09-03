@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Controls="*res://scripts/Controls.gd"
 SaveManager="*res://scripts/SaveManager.gd"
 
 [display]

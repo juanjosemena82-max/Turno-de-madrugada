@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwg8ifwfinasw"
-path="res://.godot/imported/Stuard Contreras.png-479ec7ce0a3f1de54f98b5e32962cbbd.ctex"
+uid="uid://cmabhhhyqqq6t"
+path="res://.godot/imported/A_12.png-421c679a03cc2819ff8fcd96586386b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assents/characters/Stuard Contreras.png"
-dest_files=["res://.godot/imported/Stuard Contreras.png-479ec7ce0a3f1de54f98b5e32962cbbd.ctex"]
+source_file="res://assents/characters/A_12.png"
+dest_files=["res://.godot/imported/A_12.png-421c679a03cc2819ff8fcd96586386b2.ctex"]
 
 [params]
 

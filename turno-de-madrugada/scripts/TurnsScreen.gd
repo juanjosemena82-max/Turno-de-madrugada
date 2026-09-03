@@ -13,6 +13,9 @@ const NOVEDAD_SCENE_PATH := "res://scenes/NovedadScreen.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/MainMenu.tscn"
 
 @onready var next_turn_label: Label = $NextTurnLabel
+@onready var confianza_label: Label = $ConfianzaLabel
+@onready var ahorros_label: Label = $AhorrosLabel
+@onready var ahorros_bar: ProgressBar = $AhorrosBar
 @onready var history_list: ItemList = $HistoryPanel/HistoryList
 @onready var start_turn_button: Button = $StartTurnButton
 @onready var back_button: Button = $BackButton
@@ -33,6 +36,10 @@ func _refresh_screen() -> void:
 	var next_day: int = SaveManager.current_save.get("current_day", 1)
 	next_turn_label.text = "Próximo turno: %d" % next_day
 	start_turn_button.text = "Comenzar Turno %d" % next_day
+	confianza_label.text = "Confianza: %s" % SaveManager.get_confianza_label()
+
+	ahorros_label.text = "Ahorros: $%s" % _format_money(SaveManager.get_ahorros())
+	ahorros_bar.value = SaveManager.get_ahorros_progress()
 
 	history_list.clear()
 	var history: Array = SaveManager.get_turn_history()
@@ -45,18 +52,32 @@ func _refresh_screen() -> void:
 	# Mostramos el turno más reciente arriba, como una bitácora.
 	for i in range(history.size() - 1, -1, -1):
 		var entry: Dictionary = history[i]
-		var line := "Turno %d — Puntaje: %s — %s" % [
+		var line := "Turno %d — Confianza: %s — %s" % [
 			entry.get("day", 0),
-			entry.get("score", 0),
+			entry.get("confianza_label", "?"),
 			entry.get("date", ""),
 		]
 		history_list.add_item(line)
 
 
+func _format_money(amount: int) -> String:
+	## Le pone separador de miles al número (ej: 1234567 -> 1.234.567).
+	var raw := str(amount)
+	var formatted := ""
+	var count := 0
+	for i in range(raw.length() - 1, -1, -1):
+		formatted = raw[i] + formatted
+		count += 1
+		if count % 3 == 0 and i != 0:
+			formatted = "." + formatted
+	return formatted
+
+
 func _on_start_turn_pressed() -> void:
 	var decisions: Dictionary = SaveManager.get_decisions()
+	var decision_log: Dictionary = SaveManager.get_decision_log()
 	var day: int = SaveManager.current_save.get("current_day", 1)
-	var level: Dictionary = LevelData.get_level(day, decisions)
+	var level: Dictionary = LevelData.get_level(day, decisions, decision_log)
 	var novedad: Dictionary = level.get("novedad", {})
 
 	if not novedad.is_empty() and ResourceLoader.exists(NOVEDAD_SCENE_PATH):
